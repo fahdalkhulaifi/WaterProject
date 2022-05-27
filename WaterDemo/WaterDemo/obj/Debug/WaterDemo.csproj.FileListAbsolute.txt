@@ -1,0 +1,14 @@
+c:\users\fahdx\documents\visual studio 2017\Projects\WaterDemo\WaterDemo\bin\Debug\WaterDemo.exe.config
+c:\users\fahdx\documents\visual studio 2017\Projects\WaterDemo\WaterDemo\bin\Debug\WaterDemo.exe
+c:\users\fahdx\documents\visual studio 2017\Projects\WaterDemo\WaterDemo\bin\Debug\WaterDemo.pdb
+c:\users\fahdx\documents\visual studio 2017\Projects\WaterDemo\WaterDemo\obj\Debug\WaterDemo.csprojResolveAssemblyReference.cache
+c:\users\fahdx\documents\visual studio 2017\Projects\WaterDemo\WaterDemo\obj\Debug\MainWindow.g.cs
+c:\users\fahdx\documents\visual studio 2017\Projects\WaterDemo\WaterDemo\obj\Debug\App.g.cs
+c:\users\fahdx\documents\visual studio 2017\Projects\WaterDemo\WaterDemo\obj\Debug\WaterDemo_MarkupCompile.cache
+c:\users\fahdx\documents\visual studio 2017\Projects\WaterDemo\WaterDemo\obj\Debug\WaterDemo_MarkupCompile.lref
+c:\users\fahdx\documents\visual studio 2017\Projects\WaterDemo\WaterDemo\obj\Debug\MainWindow.baml
+c:\users\fahdx\documents\visual studio 2017\Projects\WaterDemo\WaterDemo\obj\Debug\WaterDemo.g.resources
+c:\users\fahdx\documents\visual studio 2017\Projects\WaterDemo\WaterDemo\obj\Debug\WaterDemo.Properties.Resources.resources
+c:\users\fahdx\documents\visual studio 2017\Projects\WaterDemo\WaterDemo\obj\Debug\WaterDemo.csproj.GenerateResource.Cache
+c:\users\fahdx\documents\visual studio 2017\Projects\WaterDemo\WaterDemo\obj\Debug\WaterDemo.exe
+c:\users\fahdx\documents\visual studio 2017\Projects\WaterDemo\WaterDemo\obj\Debug\WaterDemo.pdb
