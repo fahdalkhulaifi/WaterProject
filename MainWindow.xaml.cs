@@ -20,29 +20,10 @@ namespace WaterNetworkProject
     /// </summary>
     public partial class MainWindow : Window
     {
-        int previous, current, arrears, payments, price;
 
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void Button1_Click(object sender, RoutedEventArgs e)
-        {
-            previous = Convert.ToInt32(TextBox1.Text);
-            current = Convert.ToInt32(TextBox2.Text);
-            arrears = Convert.ToInt32(TextBox3.Text);
-            payments = Convert.ToInt32(TextBox4.Text);
-
-
-            price = (current - previous) * 400 + (arrears) - (payments);
-
-
-            label3.Content = " المبلغ المطلوب " + price + " ريال ";
-            label4.Content = "فارق القراءة: " + (current - previous);
-            label6.Content = "المتأخرات:" + arrears;
-            label8.Content = ":  المدفوعات" + payments;
-            // label8.Content = TextBox4;
-        }
+        }       
     }
 }
