@@ -15,9 +15,9 @@ namespace WaterNetworkProject.Models
             _registrations = new List<Registration>();
         }
 
-        public Registration GetRegistrationByUserId(int userId)
+        public List<Registration> GetAllRegistrations()
         {
-            return _registrations.Where(r => r.Consumer.Id == userId).FirstOrDefault();
+            return _registrations;
         }
 
         public void MakeRegestration(Registration registration)
