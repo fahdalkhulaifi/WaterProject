@@ -13,14 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WaterDemo
+namespace WaterNetworkProject
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        int previous,current, arrears, payments, price;
+        int previous, current, arrears, payments, price;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -30,18 +31,18 @@ namespace WaterDemo
         {
             previous = Convert.ToInt32(TextBox1.Text);
             current = Convert.ToInt32(TextBox2.Text);
-            arrears =  Convert.ToInt32(TextBox3.Text);
+            arrears = Convert.ToInt32(TextBox3.Text);
             payments = Convert.ToInt32(TextBox4.Text);
 
-    
-            price = (current - previous) * 400+(arrears)-(payments);
-           
+
+            price = (current - previous) * 400 + (arrears) - (payments);
+
 
             label3.Content = " المبلغ المطلوب " + price + " ريال ";
-            label4.Content = "فارق القراءة: "+ (current - previous) ;
-            label6.Content ="المتأخرات:"+ arrears;
+            label4.Content = "فارق القراءة: " + (current - previous);
+            label6.Content = "المتأخرات:" + arrears;
             label8.Content = ":  المدفوعات" + payments;
-           // label8.Content = TextBox4;
+            // label8.Content = TextBox4;
         }
     }
 }
