@@ -32,7 +32,7 @@
         <Label x:Name="label6" Content="المتأخرات" HorizontalAlignment="Left" Margin="117,216,0,0" VerticalAlignment="Top" FontFamily="Arial" RenderTransformOrigin="0.408,1.687"/>
         <TextBox x:Name="TextBox4" HorizontalAlignment="Left" Height="23" Margin="255,115,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="label7" Content="المدفوعات" HorizontalAlignment="Left" Margin="418,112,0,0" VerticalAlignment="Top" FontFamily="Arial"/>
-        <Label x:Name="label8" Content="المدفوعات" HorizontalAlignment="Left" Margin="194,216,0,0" VerticalAlignment="Top" FontFamily="Arial"/>
+        <Label x:Name="label8" Content="المدفوعات" HorizontalAlignment="Left" Margin="194,216,0,0" VerticalAlignment="Top" FontFamily="Arial" />
 
     </Grid>
 </UserControl>
