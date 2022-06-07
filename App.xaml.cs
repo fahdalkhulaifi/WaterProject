@@ -24,7 +24,7 @@ namespace WaterNetworkProject
             RegistrationsBook registrationsBook = new RegistrationsBook();
 
             registrationsBook.MakeRegestration(registration);
-
+              
             base.OnStartup(e);
         }
     }
