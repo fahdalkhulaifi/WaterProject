@@ -8,6 +8,7 @@ using System.Windows;
 using WaterNetworkProject.Entities;
 using WaterNetworkProject.Models;
 using WaterNetworkProject.Services;
+using WaterNetworkProject.ViewModels;
 
 namespace WaterNetworkProject
 {
@@ -19,17 +20,16 @@ namespace WaterNetworkProject
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            Consumer consumer = new Consumer(1, "Fahd", "AL-KHULAIFI");
-            Consumation consumation = new Consumation(1, 1000, new DateTime(2022,6,1));
+            MainWindow = new MainWindow()
+            {
+                DataContext = new MainViewModel()
+            };
 
-            Registration registration = new Registration(consumer, consumation);
-            RegistrationsBook registrationsBook = new RegistrationsBook();
-
-            registrationsBook.MakeRegestration(registration);
+            MainWindow.Show();
 
             base.OnStartup(e);
         }
 
-        //ToDo: stopped at video 3 minute : 11:24
+        //ToDo: stopped at video 4 minute : 11:25 (cancel command)
     }
 }

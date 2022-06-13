@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using WaterNetworkProject.Commands;
+using WaterNetworkProject.Models;
 
 namespace WaterNetworkProject.ViewModels
 {
@@ -53,5 +55,10 @@ namespace WaterNetworkProject.ViewModels
 
         public ICommand RegisterCommand { get; }
         public ICommand CancelCommand { get; }
+
+        public MakeRegistrationViewModel(RegistrationsBook registrationsBook)
+        {
+            RegisterCommand = new MakeRegistrationCommand(this, registrationsBook);
+        }
     }
 }

@@ -24,6 +24,6 @@ namespace WaterNetworkProject
         public MainWindow()
         {
             InitializeComponent();
-        }       
+        }   
     }
 }
