@@ -19,7 +19,7 @@ namespace WaterNetworkProject
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.Syria);
+            CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.Yemen);
 
             NumberToWordConverter converter = new NumberToWordConverter(3220, currency);
 

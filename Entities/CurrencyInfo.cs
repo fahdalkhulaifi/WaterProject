@@ -4,7 +4,7 @@ namespace WaterNetworkProject.Entities
 {
     public class CurrencyInfo
     {
-        public enum Currencies { Syria = 0, UAE, SaudiArabia, Tunisia, Gold };
+        public enum Currencies { Syria = 0, UAE, SaudiArabia, Tunisia, Gold, Yemen };
 
         #region Constructors
 
@@ -112,6 +112,25 @@ namespace WaterNetworkProject.Entities
                     IsCurrencyPartNameFeminine = false;
                     break;
 
+                case Currencies.Yemen:
+                    CurrencyID = 5;
+                    CurrencyCode = "YER";
+                    IsCurrencyNameFeminine = false;
+                    EnglishCurrencyName = "Yemeni Riyal";
+                    EnglishPluralCurrencyName = "Yemeni Riyals";
+                    EnglishCurrencyPartName = "";
+                    EnglishPluralCurrencyPartName = "";
+                    Arabic1CurrencyName = "ريال يمني";
+                    Arabic2CurrencyName = "ريالان يمنيان";
+                    Arabic310CurrencyName = "ريالات يمنية";
+                    Arabic1199CurrencyName = "ريالاً يمنياً";
+                    Arabic1CurrencyPartName = "";
+                    Arabic2CurrencyPartName = "";
+                    Arabic310CurrencyPartName = "";
+                    Arabic1199CurrencyPartName = "";
+                    PartPrecision = 5;
+                    IsCurrencyPartNameFeminine = true;
+                    break;
             }
         }
 
