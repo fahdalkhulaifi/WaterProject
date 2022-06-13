@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WaterNetworkProject.Views
 {
     /// <summary>
-    /// Interaction logic for MakeRegistrationView.xaml
+    /// Interaction logic for UserConsumationView.xaml
     /// </summary>
-    public partial class MakeRegistrationView : UserControl
+    public partial class UserConsumationView : UserControl
     {
-        public MakeRegistrationView()
+        public UserConsumationView()
         {
             InitializeComponent();
         }

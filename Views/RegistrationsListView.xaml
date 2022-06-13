@@ -22,25 +22,22 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="1" Margin="10 0 0 0" Content="أضافة قراءة" />
+            <Button Command="{Binding MakeRegistrationCommand}"
+                Grid.Column="1" Margin="10 0 0 0" Content="أضافة قراءة" />
 
             <TextBlock Grid.Column="0" Text="قائمة المستهلكين" FontSize="24"/>
         </Grid>
 
         <!--Consumers list-->
-        <ListView Grid.Row="1" Margin="0 25 0 0">
-            <ListViewItem/>
-            <ListViewItem/>
-            <ListViewItem/>
-            <ListViewItem/>
-            <ListViewItem/>
-
+        <ListView Grid.Row="1" Margin="0 25 0 0"
+                  ItemsSource="{Binding Registrations}">
+            
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="رقم المشترك">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="12"/>
+                                <TextBlock Text="{Binding ConsumerId}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -48,7 +45,7 @@
                     <GridViewColumn Header="اسم المشترك">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="فهد الخليفي"/>
+                                <TextBlock Text="{Binding ConsumerName}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -56,7 +53,7 @@
                     <GridViewColumn Header="التاريخ">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="12/5/2022"/>
+                                <TextBlock Text="{Binding ConsumationDate}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -64,15 +61,7 @@
                     <GridViewColumn Header="قيمة الاستهلاك">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="43424"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-
-                    <GridViewColumn Header="أجمالي المبلغ المستحق">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="3246"/>
+                                <TextBlock Text="{Binding CounterLecture}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>

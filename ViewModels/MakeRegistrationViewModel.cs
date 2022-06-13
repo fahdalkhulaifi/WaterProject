@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace WaterNetworkProject.ViewModels
 {
@@ -49,5 +50,8 @@ namespace WaterNetworkProject.ViewModels
                 OnPropertyChanged(nameof(RegistrationDate));
             }
         }
+
+        public ICommand RegisterCommand { get; }
+        public ICommand CancelCommand { get; }
     }
 }

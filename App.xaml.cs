@@ -19,22 +19,17 @@ namespace WaterNetworkProject
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            CurrencyInfo currency = new CurrencyInfo(CurrencyInfo.Currencies.Yemen);
+            Consumer consumer = new Consumer(1, "Fahd", "AL-KHULAIFI");
+            Consumation consumation = new Consumation(1, 1000, new DateTime(2022,6,1));
 
-            NumberToWordConverter converter = new NumberToWordConverter(3220, currency);
+            Registration registration = new Registration(consumer, consumation);
+            RegistrationsBook registrationsBook = new RegistrationsBook();
 
-            var result = converter.ConvertToArabic();
-            Console.WriteLine(result);
-
-            //Consumer consumer = new Consumer(1, "Fahd", "AL-KHULAIFI");
-            //Consumation consumation = new Consumation(1, 1000, new DateTime(2022,6,1));
-
-            //Registration registration = new Registration(consumer, consumation);
-            //RegistrationsBook registrationsBook = new RegistrationsBook();
-
-            //registrationsBook.MakeRegestration(registration);
+            registrationsBook.MakeRegestration(registration);
 
             base.OnStartup(e);
         }
+
+        //ToDo: stopped at video 3 minute : 11:24
     }
 }

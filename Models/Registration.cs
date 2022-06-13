@@ -9,12 +9,14 @@ namespace WaterNetworkProject.Models
     public class Registration
     {
         public Consumer Consumer { get; }
-        public Consumation Consumation { get; }
+        public int CounterLecture { get; set; }
+        public DateTime ConsumationDate { get; set; }
 
-        public Registration(Consumer consumer, Consumation consumation)
+        public Registration(Consumer consumer, int counterLecture, DateTime consumationDate)
         {
             Consumer = consumer;
-            Consumation = consumation;
+            CounterLecture = counterLecture;
+            ConsumationDate = consumationDate;
         }
     }
 }
