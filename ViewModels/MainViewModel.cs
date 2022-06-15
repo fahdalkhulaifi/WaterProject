@@ -4,18 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WaterNetworkProject.Models;
+using WaterNetworkProject.Stores;
 
 namespace WaterNetworkProject.ViewModels
 {
     public class MainViewModel : ViewModelBase 
     {
-        public ViewModelBase CurrentViewModel{ get; }
+        private readonly NavigationStore _navigationStore;
+        public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
 
-        public MainViewModel()
+        public MainViewModel(NavigationStore navigationStore)
         {
-            RegistrationsBook registrationsBook = new RegistrationsBook();
+            _navigationStore = navigationStore;
+            _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
+        }
 
-            CurrentViewModel = new MakeRegistrationViewModel(registrationsBook);
+        private void OnCurrentViewModelChanged()
+        {
+            OnPropertyChanged(nameof(CurrentViewModel));
         }
     }
 }

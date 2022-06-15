@@ -8,6 +8,7 @@ using System.Windows;
 using WaterNetworkProject.Entities;
 using WaterNetworkProject.Models;
 using WaterNetworkProject.Services;
+using WaterNetworkProject.Stores;
 using WaterNetworkProject.ViewModels;
 
 namespace WaterNetworkProject
@@ -17,12 +18,22 @@ namespace WaterNetworkProject
     /// </summary>
     public partial class App : Application
     {
+        private readonly RegistrationsBook _registrationsBook;
+        private readonly NavigationStore _navigationStore;
+
+        public App()
+        {
+            _registrationsBook = new RegistrationsBook();
+            _navigationStore = new NavigationStore();
+        }
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            _navigationStore.CurrentViewModel = new RegistrationListViewModel(_navigationStore);
+
             MainWindow = new MainWindow()
             {
-                DataContext = new MainViewModel()
+                DataContext = new MainViewModel(_navigationStore)
             };
 
             MainWindow.Show();
@@ -30,6 +41,8 @@ namespace WaterNetworkProject
             base.OnStartup(e);
         }
 
-        //ToDo: stopped at video 4 minute : 11:25 (cancel command)
+ 
+
+        //ToDo: stopped at video 5 minute : 7:04 (navigate from list to make view)
     }
 }

@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace WaterNetworkProject.Commands
 {
-    public class CancelCommand
+    public class CancelMakeRegistrationCommand : CommandBase
     {
+        public override void Execute(object parameter)
+        {
+        }
     }
 }

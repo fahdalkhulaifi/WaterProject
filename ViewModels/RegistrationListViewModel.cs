@@ -5,7 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using WaterNetworkProject.Commands;
 using WaterNetworkProject.Models;
+using WaterNetworkProject.Stores;
 
 namespace WaterNetworkProject.ViewModels
 {
@@ -16,9 +18,11 @@ namespace WaterNetworkProject.ViewModels
         public IEnumerable<RegistrationViewModel> Registrations => _registrations;
         public ICommand MakeRegistrationCommand { get; }
 
-        public RegistrationListViewModel()
+        public RegistrationListViewModel(NavigationStore navigationStore)
         {
             _registrations = new ObservableCollection<RegistrationViewModel>();
+
+            MakeRegistrationCommand = new NavigateCommand(navigationStore);
 
             _registrations.Add(new RegistrationViewModel(new Registration(new Consumer(1, "Fahd", "AL-KHULAIFI"), 1000, new DateTime(2022, 6, 1))));
             _registrations.Add(new RegistrationViewModel(new Registration(new Consumer(1, "Abdulmaged", "AL-KHULAIFI"), 1000, new DateTime(2022, 5, 1))));

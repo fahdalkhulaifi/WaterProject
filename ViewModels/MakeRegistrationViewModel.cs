@@ -59,6 +59,7 @@ namespace WaterNetworkProject.ViewModels
         public MakeRegistrationViewModel(RegistrationsBook registrationsBook)
         {
             RegisterCommand = new MakeRegistrationCommand(this, registrationsBook);
+            CancelCommand = new CancelMakeRegistrationCommand();
         }
     }
 }
