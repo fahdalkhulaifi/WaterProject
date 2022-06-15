@@ -24,9 +24,9 @@ namespace WaterNetworkProject.ViewModels
 
             MakeRegistrationCommand = new NavigateCommand(navigationStore);
 
-            _registrations.Add(new RegistrationViewModel(new Registration(new Consumer(1, "Fahd", "AL-KHULAIFI"), 1000, new DateTime(2022, 6, 1))));
-            _registrations.Add(new RegistrationViewModel(new Registration(new Consumer(1, "Abdulmaged", "AL-KHULAIFI"), 1000, new DateTime(2022, 5, 1))));
-            _registrations.Add(new RegistrationViewModel(new Registration(new Consumer(1, "Omar", "AL-KHULAIFI"), 1000, new DateTime(2019, 6, 1))));
+            _registrations.Add(new RegistrationViewModel(new Registration(new Consumer(1, "الخليفي", "فهد خالد عمر محسن"), 1000, new DateTime(2022, 6, 1))));
+            _registrations.Add(new RegistrationViewModel(new Registration(new Consumer(1, "الخليفي", "عبدالمجيد خالد عمر محسن"), 1000, new DateTime(2022, 5, 1))));
+            _registrations.Add(new RegistrationViewModel(new Registration(new Consumer(1, "الخليفي", "عمر خالد عمر محسن"), 1000, new DateTime(2019, 6, 1))));
 
         }
     }

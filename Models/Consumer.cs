@@ -12,7 +12,7 @@ namespace WaterNetworkProject.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public Consumer(long id, string firstName, string lastName)
+        public Consumer(long id, string lastName, string firstName)
         {
             Id = id;
             FirstName = firstName;
