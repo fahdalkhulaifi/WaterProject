@@ -29,6 +29,11 @@ namespace WaterNetworkProject
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            //Test
+            BillHelper billHelper = new BillHelper();
+
+            billHelper.CreateBill();
+
             _navigationStore.CurrentViewModel = new RegistrationListViewModel(_navigationStore);
 
             MainWindow = new MainWindow()
