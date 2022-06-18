@@ -27,6 +27,10 @@
 
         <!--Registration button-->
         <Button Content="تسجيل" Command="{Binding RegisterCommand}"
+                HorizontalAlignment="Left" Margin="90,120,0,0" VerticalAlignment="Top" Width="75"  FontFamily="Arial"/>
+
+        <!--Cancel button-->
+        <Button Content="الغاء" Command="{Binding CancelCommand}"
                 HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top" Width="75"  FontFamily="Arial"/>
 
     </Grid>

@@ -29,7 +29,7 @@ namespace WaterNetworkProject
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            _navigationStore.CurrentViewModel = new RegistrationListViewModel(_navigationStore);
+            _navigationStore.CurrentViewModel = CreateRegistrationViewModel();
 
             MainWindow = new MainWindow()
             {
@@ -41,7 +41,17 @@ namespace WaterNetworkProject
             base.OnStartup(e);
         }
 
- 
+        private MakeRegistrationViewModel CreateMakeRegistrationViewMode()
+        {
+            return new MakeRegistrationViewModel(_registrationsBook, _navigationStore, CreateRegistrationViewModel);
+        }
+
+        private RegistrationListViewModel CreateRegistrationViewModel()
+        {
+            return new RegistrationListViewModel(_navigationStore, CreateMakeRegistrationViewMode);
+        }
+
+
 
         //ToDo: stopped at video 5 minute : 7:04 (navigate from list to make view)
     }

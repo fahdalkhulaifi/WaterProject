@@ -18,11 +18,11 @@ namespace WaterNetworkProject.ViewModels
         public IEnumerable<RegistrationViewModel> Registrations => _registrations;
         public ICommand MakeRegistrationCommand { get; }
 
-        public RegistrationListViewModel(NavigationStore navigationStore)
+        public RegistrationListViewModel(NavigationStore navigationStore, Func<MakeRegistrationViewModel> createMakeRegistrationViewModel)
         {
             _registrations = new ObservableCollection<RegistrationViewModel>();
 
-            MakeRegistrationCommand = new NavigateCommand(navigationStore);
+            MakeRegistrationCommand = new NavigateCommand(navigationStore, createMakeRegistrationViewModel);
 
             _registrations.Add(new RegistrationViewModel(new Registration(new Consumer(1, "Fahd", "AL-KHULAIFI"), 1000, new DateTime(2022, 6, 1))));
             _registrations.Add(new RegistrationViewModel(new Registration(new Consumer(1, "Abdulmaged", "AL-KHULAIFI"), 1000, new DateTime(2022, 5, 1))));
