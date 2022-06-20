@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using WaterNetworkProject.Commands;
 using WaterNetworkProject.Models;
+using WaterNetworkProject.Services;
 using WaterNetworkProject.Stores;
 
 namespace WaterNetworkProject.ViewModels
@@ -57,10 +58,10 @@ namespace WaterNetworkProject.ViewModels
         public ICommand RegisterCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public MakeRegistrationViewModel(RegistrationsBook registrationsBook,NavigationStore navigationStore, Func<RegistrationListViewModel> createRegistrationViewModel)
+        public MakeRegistrationViewModel(RegistrationsBook registrationsBook, NavigationService registrationNavigationService)
         {
-            RegisterCommand = new MakeRegistrationCommand(this, registrationsBook);
-            CancelCommand = new NavigateCommand(navigationStore,createRegistrationViewModel);
+            RegisterCommand = new MakeRegistrationCommand(this, registrationsBook, registrationNavigationService);
+            CancelCommand = new NavigateCommand(registrationNavigationService);
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WaterNetworkProject.Models;
+using WaterNetworkProject.Services;
 using WaterNetworkProject.Stores;
 using WaterNetworkProject.ViewModels;
 
@@ -11,18 +12,16 @@ namespace WaterNetworkProject.Commands
 {
     public class NavigateCommand : CommandBase
     {
-        private readonly NavigationStore _navigationStore;
-        private readonly Func<ViewModelBase> _createViewModel;
+        private readonly NavigationService _navigationService;
 
-        public NavigateCommand(NavigationStore navigationStore,Func<ViewModelBase> createViewModel)
+        public NavigateCommand(NavigationService navigationService)
         {
-            _navigationStore = navigationStore;
-            _createViewModel = createViewModel;
+            _navigationService = navigationService;
         }
 
         public override void Execute(object parameter)
         {
-            _navigationStore.CurrentViewModel = _createViewModel() ;
+            _navigationService.Navigate();
         }
     }
 }
