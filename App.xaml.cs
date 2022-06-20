@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,17 +26,24 @@ namespace WaterNetworkProject
         {
             _registrationsBook = new RegistrationsBook();
             _navigationStore = new NavigationStore();
+
+            _registrationsBook.Consumers = File.ReadAllLines(_registrationsBook.PathHelper.ConsumersFilePath)
+                .Skip(1)
+                .Select(v => Consumer.FromCsv(v))
+                .ToList();
+            if (File.Exists(_registrationsBook.PathHelper.RegistrationsFilePath))
+            {
+                _registrationsBook.Registrations = File.ReadAllLines(_registrationsBook.PathHelper.RegistrationsFilePath)
+                .Skip(1)
+                .Select(v => _registrationsBook.FromCsv(v))
+                .ToList();
+            } 
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            //Test
-            BillHelper billHelper = new BillHelper();
 
-            billHelper.CreateBill();
-
-            _navigationStore.CurrentViewModel = new RegistrationListViewModel(_navigationStore);
-
+            _navigationStore.CurrentViewModel = CreateRegistrationViewModel();
             MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel(_navigationStore)
@@ -46,7 +54,21 @@ namespace WaterNetworkProject
             base.OnStartup(e);
         }
 
- 
+        protected override void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+            _registrationsBook.SaveRegistrationsLocally();
+        }
+
+        private MakeRegistrationViewModel CreateMakeRegistrationViewMode()
+        {
+            return new MakeRegistrationViewModel(_registrationsBook,new NavigationService( _navigationStore, CreateRegistrationViewModel));
+        }
+
+        private RegistrationListViewModel CreateRegistrationViewModel()
+        {
+            return new RegistrationListViewModel(_registrationsBook, new NavigationService(_navigationStore, CreateMakeRegistrationViewMode));
+        }
 
         //ToDo: stopped at video 5 minute : 7:04 (navigate from list to make view)
     }

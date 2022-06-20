@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using WaterNetworkProject.Commands;
 using WaterNetworkProject.Models;
+using WaterNetworkProject.Services;
 using WaterNetworkProject.Stores;
 
 namespace WaterNetworkProject.ViewModels
@@ -14,20 +15,30 @@ namespace WaterNetworkProject.ViewModels
     public class RegistrationListViewModel : ViewModelBase
     {
         private readonly ObservableCollection<RegistrationViewModel> _registrations;
+        private readonly RegistrationsBook _registrationsBook;
 
         public IEnumerable<RegistrationViewModel> Registrations => _registrations;
         public ICommand MakeRegistrationCommand { get; }
 
-        public RegistrationListViewModel(NavigationStore navigationStore)
+        public RegistrationListViewModel(RegistrationsBook registrationsBook, NavigationService makeRegisrationNavigationService)
         {
             _registrations = new ObservableCollection<RegistrationViewModel>();
+            _registrationsBook = registrationsBook;
 
-            MakeRegistrationCommand = new NavigateCommand(navigationStore);
+            MakeRegistrationCommand = new NavigateCommand(makeRegisrationNavigationService);
+            UpdateRegistrations();
+        }
 
-            _registrations.Add(new RegistrationViewModel(new Registration(new Consumer(1, "الخليفي", "فهد خالد عمر محسن"), 1000, new DateTime(2022, 6, 1))));
-            _registrations.Add(new RegistrationViewModel(new Registration(new Consumer(1, "الخليفي", "عبدالمجيد خالد عمر محسن"), 1000, new DateTime(2022, 5, 1))));
-            _registrations.Add(new RegistrationViewModel(new Registration(new Consumer(1, "الخليفي", "عمر خالد عمر محسن"), 1000, new DateTime(2019, 6, 1))));
+        private void UpdateRegistrations()
+        {
+           _registrations.Clear();
 
+            foreach (var registration in _registrationsBook.GetAllRegistrations())
+            {
+                RegistrationViewModel registrationViewModel = new RegistrationViewModel(registration);
+                
+                _registrations.Add(registrationViewModel);
+            }
         }
     }
 }

@@ -18,5 +18,10 @@ namespace WaterNetworkProject.Models
             CounterLecture = counterLecture;
             ConsumationDate = consumationDate;
         }
+
+        public string toCsv()
+        {
+            return Consumer.Id + "," + Consumer.FirstName + "," + Consumer.LastName + "," + CounterLecture + "," + ConsumationDate.ToString();
+        }
     }
 }
