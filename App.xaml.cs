@@ -42,8 +42,8 @@ namespace WaterNetworkProject
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            _navigationStore.CurrentViewModel = CreateRegistrationViewModel();
 
+            _navigationStore.CurrentViewModel = CreateRegistrationViewModel();
             MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel(_navigationStore)

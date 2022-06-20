@@ -26,7 +26,6 @@ namespace WaterNetworkProject.ViewModels
             _registrationsBook = registrationsBook;
 
             MakeRegistrationCommand = new NavigateCommand(makeRegisrationNavigationService);
-
             UpdateRegistrations();
         }
 
@@ -37,7 +36,7 @@ namespace WaterNetworkProject.ViewModels
             foreach (var registration in _registrationsBook.GetAllRegistrations())
             {
                 RegistrationViewModel registrationViewModel = new RegistrationViewModel(registration);
-
+                
                 _registrations.Add(registrationViewModel);
             }
         }

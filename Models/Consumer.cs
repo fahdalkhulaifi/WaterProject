@@ -13,6 +13,7 @@ namespace WaterNetworkProject.Models
         public string LastName { get; set; }
 
 
+
         #region constructors
         public Consumer() {}
         public Consumer(int id, string firstName, string lastName)
