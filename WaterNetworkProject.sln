@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.32428.217
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WaterNetworkProject", "WaterNetworkProject.csproj", "{DAD5DDBC-2E73-4AF4-BE59-536176061235}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterNetwork.Domain.Tests", "..\WaterNetwork.Domain.Tests\WaterNetwork.Domain.Tests.csproj", "{CE444EB8-9B01-4E9E-A3AD-9C02C711DFF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DAD5DDBC-2E73-4AF4-BE59-536176061235}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAD5DDBC-2E73-4AF4-BE59-536176061235}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAD5DDBC-2E73-4AF4-BE59-536176061235}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE444EB8-9B01-4E9E-A3AD-9C02C711DFF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE444EB8-9B01-4E9E-A3AD-9C02C711DFF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE444EB8-9B01-4E9E-A3AD-9C02C711DFF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE444EB8-9B01-4E9E-A3AD-9C02C711DFF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

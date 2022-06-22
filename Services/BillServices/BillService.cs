@@ -9,32 +9,30 @@ using WaterNetworkProject.Models;
 
 namespace WaterNetworkProject.Services
 {
-    public class BillHelper
+    public class BillService
     {
+        public PathHelper PathHelper { get; set; }
 
-        public void CreateBill()
+        public BillService()
+        {
+            PathHelper = new PathHelper();
+        }
+
+        public void CreateBill(Registration registration)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
-            string up3 = null;
-            DirectoryInfo d = new DirectoryInfo(Directory.GetCurrentDirectory());
-            if (d.Parent.Parent != null && d.Parent.Parent.Parent != null)
-            {
-                up3 = d.Parent.Parent.Parent.ToString();
-            }
-            string sourceDirectory = up3 + @"\Source\";
-
-            var registration = new Registration(new Consumer(1, "الخليفي", "فهد خالد عمر محسن"), 1000, new DateTime(2022, 6, 1));
-
-            string inputFile = sourceDirectory + "WaterProjectBillTemplate.xlsx";
-            string outputFile = sourceDirectory + "WaterProjectBillTemplate2.xlsx";
+            string outputFile = PathHelper.SourceDirectory + $"{registration.Consumer.GetFullName()}.xlsx";
 
 
+            if(!Directory.Exists(Path.GetDirectoryName(outputFile)))
+                Directory.CreateDirectory(Path.GetDirectoryName(outputFile));
+                
             if (File.Exists(outputFile))
                 File.Delete(outputFile);
 
             //Copy template with new name
-            File.Copy(inputFile, outputFile);
+            File.Copy(PathHelper.ExcelTemplatePath, outputFile);
 
 
             using (var package = new ExcelPackage(new FileInfo(outputFile)))

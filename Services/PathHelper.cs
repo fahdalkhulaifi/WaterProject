@@ -10,6 +10,7 @@ namespace WaterNetworkProject.Services
     public class PathHelper
     {
         public string SourceDirectory { get;  }
+        public string ExcelTemplatePath { get; }
         public string RootDirectory { get; }
         public string ConsumersFilePath { get; }
         public string RegistrationsFilePath { get; }
@@ -23,8 +24,11 @@ namespace WaterNetworkProject.Services
                 up3 = d.Parent.Parent.Parent.ToString();
             }
 
+
             RootDirectory = up3 + @"\";
             SourceDirectory = RootDirectory + @"Source\";
+
+            ExcelTemplatePath =  SourceDirectory + "WaterProjectBillTemplate.xlsx";
 
             ConsumersFilePath = SourceDirectory + "Consumers.csv";
             RegistrationsFilePath = SourceDirectory + "Registrations.csv";

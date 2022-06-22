@@ -25,6 +25,11 @@ namespace WaterNetworkProject.Models
 
         #endregion
 
+        public string GetFullName()
+        {
+            return FirstName + " " + LastName;
+        }
+
         public static Consumer FromCsv(string csvLine)
         {
             string[] values = csvLine.Split(",");
