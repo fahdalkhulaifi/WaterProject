@@ -30,19 +30,10 @@ namespace WaterNetworkProject.Commands
         {
             try
             {
-                
-
-                var consumer = _registrationsBook.GetConsumerById(_makeRegistrationViewModel.UserId);
-
-
-                //ToDo: customize exception, user not found
-                if (consumer == null)
-                    throw new Exception();
-
                 //ToDo: Update registration if exist
-                Registration registration = new Registration(consumer, _makeRegistrationViewModel.CounterLecture, _makeRegistrationViewModel.RegistrationDate);
+                Registration registration = new Registration(_makeRegistrationViewModel.UserId, _makeRegistrationViewModel.CounterLecture, _makeRegistrationViewModel.RegistrationDate);
 
-                _registrationsBook.MakeRegestration(registration);
+                _registrationsBook.AddRegistration(registration);
 
                 MessageBox.Show("تم التقييد بنجاح");
 

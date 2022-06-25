@@ -18,37 +18,46 @@ namespace WaterNetworkProject.Services
             PathHelper = new PathHelper();
         }
 
-        public void CreateBill(Registration registration)
+        public void CreateBill(RegistrationsBook registrationBook)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
-            string outputFile = PathHelper.SourceDirectory + $"{registration.Consumer.GetFullName()}.xlsx";
-
-
-            if(!Directory.Exists(Path.GetDirectoryName(outputFile)))
-                Directory.CreateDirectory(Path.GetDirectoryName(outputFile));
-                
-            if (File.Exists(outputFile))
-                File.Delete(outputFile);
-
-            //Copy template with new name
-            File.Copy(PathHelper.ExcelTemplatePath, outputFile);
-
-
-            using (var package = new ExcelPackage(new FileInfo(outputFile)))
+            foreach (var registration in registrationBook.Registrations)
             {
-                var ws = package.Workbook.Worksheets[0];
 
-                //var test1 = ws.Cells["C16"].Value;
+                var consumer = registrationBook.Consumers.Where(c => c.Id == registration.ConsumerId).FirstOrDefault();
 
-                ws.Cells["I10"].Value = registration.Consumer.FirstName + ' ' + registration.Consumer.LastName;
-
-                ws.Cells["I4"].Value = registration.ConsumationDate;
-
-                ws.Cells["C10"].Value = registration.Consumer.Id;
+                //ToDo: Add exception if consumer not found
+                if(consumer != null)
+                {
+                    string outputFile = PathHelper.SourceDirectory + $"{consumer.GetFullName()}.xlsx";
 
 
-                package.SaveAs(new FileInfo(outputFile));
+                    if (!Directory.Exists(Path.GetDirectoryName(outputFile)))
+                        Directory.CreateDirectory(Path.GetDirectoryName(outputFile));
+
+                    if (File.Exists(outputFile))
+                        File.Delete(outputFile);
+
+                    //Copy template with new name
+                    File.Copy(PathHelper.ExcelTemplatePath, outputFile);
+
+
+                    using (var package = new ExcelPackage(new FileInfo(outputFile)))
+                    {
+                        var ws = package.Workbook.Worksheets[0];
+
+
+                        ws.Cells["I10"].Value = consumer.FirstName + ' ' + consumer.LastName;
+
+                        ws.Cells["I4"].Value = registration.ConsumationDate;
+
+                        ws.Cells["C10"].Value = consumer.Id;
+
+
+                        package.SaveAs(new FileInfo(outputFile));
+                    }
+                }
             }
         }
     }

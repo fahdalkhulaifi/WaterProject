@@ -12,7 +12,7 @@ namespace WaterNetworkProject.Models
     {
         public PathHelper PathHelper { get; set; }
         public List<Registration> Registrations;
-       public List<Consumer> Consumers;
+        public List<Consumer> Consumers;
 
 
         public RegistrationsBook()
@@ -39,7 +39,7 @@ namespace WaterNetworkProject.Models
                 var counterLecture = (int)Convert.ToInt64(values[3]);
                 var dateLecutre = Convert.ToDateTime(values[4]);
 
-                return new Registration(consumer, counterLecture, dateLecutre);
+                return new Registration(consumer.Id,consumer.GetFullName(), counterLecture, dateLecutre);
             }
             return null;
         }
@@ -76,39 +76,54 @@ namespace WaterNetworkProject.Models
             Consumers.Add(consumer);
         }
 
-        public void MakeRegestration(Registration registration)
+        public void AddRegistration(Registration registration)
         {
-            foreach (var _registration in Registrations)
+            Consumer consumer = Consumers.FirstOrDefault(c => c.Id == registration.ConsumerId);
+
+            //ToDo: Exception user not found
+
+            if (consumer != null)
             {
-                if (registration.Consumer.Id == _registration.Consumer.Id &&
-                    registration.ConsumationDate.Month == _registration.ConsumationDate.Month)
+                foreach (var _registration in Registrations)
                 {
-                    _registration.CounterLecture = registration.CounterLecture;
-                    _registration.ConsumationDate = registration.ConsumationDate;
-                    return;
+                    if (registration.ConsumerId == _registration.ConsumerId &&
+                        registration.ConsumationDate.Month == _registration.ConsumationDate.Month)
+                    {
+                        _registration.CounterLecture = registration.CounterLecture;
+                        _registration.ConsumationDate = registration.ConsumationDate;
+                        registration.ConsumerName = consumer.GetFullName();
+                        return;
+                    }
                 }
+
+                registration.ConsumerName = consumer.GetFullName();
+                Registrations.Add(registration);
             }
-            Registrations.Add(registration);
+        }
+
+        public List<string> GetContent()
+        {
+            string headers = "Id,First Name,Last Name,Counter Lecture,Date Lecture";
+            List<string> content = new List<string>();
+            content.Add(headers);
+
+            foreach (var registration in Registrations)
+            {
+                Consumer consumer = Consumers.FirstOrDefault(c => c.Id == registration.ConsumerId);
+
+               content.Add(registration.ConsumerId + "," + consumer.FirstName + "," + consumer.LastName + "," + registration.CounterLecture + "," + registration.ConsumationDate.ToString());
+            }
+            return content;
         }
 
         public void SaveRegistrationsLocally()
         {
-            string headers = "Id,First Name,Last Name,Counter Lecture,Date Lecture";
-
             if (File.Exists(PathHelper.RegistrationsFilePath))
                 File.Delete(PathHelper.RegistrationsFilePath);
 
-            List<string> content = new List<string>();
+            List<string> content = GetContent();
 
-            content.Add(headers);
-
-            //ToDo: correct append and encoding
-            foreach (var registration in Registrations)
-            {
-                content.Add(registration.toCsv());
-            }
-
-            File.WriteAllLines(PathHelper.RegistrationsFilePath,content,Encoding.UTF8);
+            File.WriteAllLines(PathHelper.RegistrationsFilePath, content, Encoding.UTF8);
         }
     }
 }

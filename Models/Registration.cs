@@ -8,20 +8,24 @@ namespace WaterNetworkProject.Models
 {
     public class Registration
     {
-        public Consumer Consumer { get; }
+        public int ConsumerId { get; }
+        public string ConsumerName { get; set; }
         public int CounterLecture { get; set; }
         public DateTime ConsumationDate { get; set; }
 
-        public Registration(Consumer consumer, int counterLecture, DateTime consumationDate)
+        public Registration(int consumerId, int counterLecture, DateTime consumationDate)
         {
-            Consumer = consumer;
+            ConsumerId = consumerId;
             CounterLecture = counterLecture;
             ConsumationDate = consumationDate;
         }
 
-        public string toCsv()
+        public Registration(int consumerId, string consumerName, int counterLecture, DateTime consumationDate)
         {
-            return Consumer.Id + "," + Consumer.FirstName + "," + Consumer.LastName + "," + CounterLecture + "," + ConsumationDate.ToString();
+            ConsumerId = consumerId;
+            ConsumerName = consumerName;
+            CounterLecture = counterLecture;
+            ConsumationDate = consumationDate;
         }
     }
 }

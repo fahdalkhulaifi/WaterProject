@@ -11,9 +11,9 @@ namespace WaterNetworkProject.ViewModels
     {
         private readonly Registration _registration;
 
-        public long ConsumerId => _registration.Consumer.Id;
-        public string ConsumerName => _registration.Consumer.FirstName + " " + _registration.Consumer.LastName;
-      
+        public long ConsumerId => _registration.ConsumerId;
+        public string ConsumerName => _registration.ConsumerName;
+
         public int CounterLecture => _registration.CounterLecture;
         public string ConsumationDate => _registration.ConsumationDate.ToString("dd/MM/yyyy");
 
