@@ -30,13 +30,13 @@ namespace WaterNetworkProject
 
         public App()
         {
-            string connectionString = "Data Source=Waternetwork";
+            string connectionString = "Server=.\\SQLEXPRESS;Database=WaterNetwork;Trusted_connection=true";
 
             _registrationsBookService = new RegistrationBookService();
             _navigationStore = new NavigationStore();
 
             _appDbContextFactory = new AppDbContextFactory(
-                new DbContextOptionsBuilder().UseSqlite(connectionString).Options
+                new DbContextOptionsBuilder().UseSqlServer(connectionString).Options
                 );
 
             _addRegistrationCommand = new AddRegistrationCommand(_appDbContextFactory);
