@@ -21,7 +21,7 @@ namespace WaterNetworkProject
     {
         private readonly RegistrationsBook _registrationsBook;
         private readonly NavigationStore _navigationStore;
-
+         
         public App()
         {
             _registrationsBook = new RegistrationsBook();
