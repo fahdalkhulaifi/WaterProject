@@ -5,7 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using WaterNetworkProject.Models;
+using WaterNetwork.Domain.Commands.Registrations;
+using WaterNetwork.Domain.Models;
 using WaterNetworkProject.Services;
 using WaterNetworkProject.ViewModels;
 
@@ -17,12 +18,16 @@ namespace WaterNetworkProject.Commands
         private RegistrationsBook _registrationsBook;
         private readonly NavigationService _registartionService;
 
-        public MakeRegistrationCommand(MakeRegistrationViewModel makeRegistrationViewModel, RegistrationsBook registrationsBook, NavigationService registartionService)
+        private readonly IAddRegistrationCommand _addRegistrationCommand;
+
+        public MakeRegistrationCommand(MakeRegistrationViewModel makeRegistrationViewModel, RegistrationsBook registrationsBook, NavigationService registartionService, IAddRegistrationCommand addRegistrationCommand)
         {
             _makeRegistrationViewModel = makeRegistrationViewModel;
             _registrationsBook = registrationsBook;
-            this._registartionService = registartionService;
+            _registartionService = registartionService;
+            _addRegistrationCommand = addRegistrationCommand;
             _makeRegistrationViewModel.PropertyChanged += OnViewModelPropertyChanged;
+
         }
 
 
@@ -35,6 +40,8 @@ namespace WaterNetworkProject.Commands
 
                 _registrationsBook.AddRegistration(registration);
 
+                //ToDo: Handle exception
+                _addRegistrationCommand.Execute(registration);
                 MessageBox.Show("تم التقييد بنجاح");
 
                 _registartionService.Navigate();

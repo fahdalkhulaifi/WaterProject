@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WaterNetworkProject.Commands;
-using WaterNetworkProject.Models;
+using WaterNetwork.Domain.Models;
 using WaterNetworkProject.Services;
 using WaterNetworkProject.Stores;
 

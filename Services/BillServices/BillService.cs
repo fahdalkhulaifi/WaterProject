@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WaterNetworkProject.Models;
+using WaterNetwork.Domain.Models;
 
 namespace WaterNetworkProject.Services
 {
