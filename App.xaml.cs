@@ -15,6 +15,7 @@ using WaterNetwork.Domain.Commands.Registrations;
 using WaterNetwork.EntityFramework.Commands.Registrations;
 using WaterNetwork.EntityFramework;
 using Microsoft.EntityFrameworkCore;
+using WaterNetwork.EntityFramework.Queries;
 
 namespace WaterNetworkProject
 {
@@ -39,7 +40,7 @@ namespace WaterNetworkProject
                 new DbContextOptionsBuilder().UseSqlServer(connectionString).Options
                 );
 
-            _addRegistrationCommand = new AddRegistrationCommand(_appDbContextFactory);
+            //_addRegistrationCommand = new AddRegistrationCommand(_appDbContextFactory);
 
             _registrationsBookService.RegistrationBook.Consumers = File.ReadAllLines(_registrationsBookService.PathHelper.ConsumersFilePath)
                 .Skip(1)
@@ -51,7 +52,7 @@ namespace WaterNetworkProject
                 .Skip(1)
                 .Select(v => _registrationsBookService.FromCsv(v))
                 .ToList();
-            } 
+            }
         }
 
         protected override void OnStartup(StartupEventArgs e)
@@ -85,5 +86,6 @@ namespace WaterNetworkProject
         }
 
         //ToDo: stopped 2:29:15  https://www.youtube.com/watch?v=54ZmhbpjBmg&list=LL&index=4&t=38s&ab_channel=SingletonSean
+        //https://www.youtube.com/watch?v=STt3U122wiU&list=PLA8ZIAm2I03hS41Fy4vFpRw8AdYNBXmNm&index=6&ab_channel=SingletonSean
     }
 }
