@@ -9,6 +9,7 @@ using WaterNetwork.Domain.Models;
 using WaterNetworkProject.Services;
 using WaterNetworkProject.Stores;
 using WaterNetwork.Domain.Commands.Registrations;
+using WaterNetwork.WPF.Stores;
 
 namespace WaterNetworkProject.ViewModels
 {
@@ -43,6 +44,8 @@ namespace WaterNetworkProject.ViewModels
         }
 
         private DateTime _registrationDate = DateTime.UtcNow;
+        private readonly RegistrationsStore registrationsStore;
+
         public DateTime RegistrationDate
         {
             get
@@ -59,10 +62,12 @@ namespace WaterNetworkProject.ViewModels
         public ICommand RegisterCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public MakeRegistrationViewModel(RegistrationsBook registrationsBook, NavigationService registrationNavigationService, IAddRegistrationCommand addRegistrationCommand)
+        public MakeRegistrationViewModel( RegistrationsStore registrationsStore, NavigationService registrationNavigationService )
         {
-            RegisterCommand = new MakeRegistrationCommand(this, registrationsBook, registrationNavigationService, addRegistrationCommand);
-            CancelCommand = new NavigateCommand(registrationNavigationService);
+
+            RegisterCommand = new MakeRegistrationCommand(this, registrationsStore, registrationNavigationService);
+            CancelCommand = new NavigateCommand(registrationNavigationService); 
+
         }
     }
 }

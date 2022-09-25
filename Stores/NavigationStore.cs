@@ -10,24 +10,23 @@ namespace WaterNetworkProject.Stores
     public class NavigationStore
     {
         private ViewModelBase _currentViewModel;
-        public ViewModelBase CurrentViewModel
+
+        public ViewModelBase CurrentviewModel
         {
-            get
-            {
-                return _currentViewModel;
-            }
+            get => _currentViewModel;
             set
             {
+                _currentViewModel?.Dispose();
                 _currentViewModel = value;
                 OnCurrentViewModelChanged();
             }
         }
 
+        public event Action CurrentViewModelChanged;
+
         private void OnCurrentViewModelChanged()
         {
             CurrentViewModelChanged?.Invoke();
         }
-
-        public event Action CurrentViewModelChanged;
     }
 }

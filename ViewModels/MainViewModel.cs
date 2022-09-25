@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WaterNetwork.Domain.Models;
+using WaterNetwork.WPF.Stores;
 using WaterNetworkProject.Stores;
 
 namespace WaterNetworkProject.ViewModels
@@ -11,7 +12,7 @@ namespace WaterNetworkProject.ViewModels
     public class MainViewModel : ViewModelBase 
     {
         private readonly NavigationStore _navigationStore;
-        public ViewModelBase CurrentViewModel => _navigationStore.CurrentViewModel;
+        public ViewModelBase CurrentViewModel => _navigationStore.CurrentviewModel;
 
         public MainViewModel(NavigationStore navigationStore)
         {

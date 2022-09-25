@@ -7,44 +7,47 @@ using System.Threading.Tasks;
 using System.Windows;
 using WaterNetwork.Domain.Commands.Registrations;
 using WaterNetwork.Domain.Models;
+using WaterNetwork.WPF.Commands;
+using WaterNetwork.WPF.Stores;
 using WaterNetworkProject.Services;
 using WaterNetworkProject.ViewModels;
 
 namespace WaterNetworkProject.Commands
 {
-    public class MakeRegistrationCommand : CommandBase
+    public class MakeRegistrationCommand : AsyncCommandbase
     {
         private MakeRegistrationViewModel _makeRegistrationViewModel;
-        private RegistrationsBook _registrationsBook;
-        private readonly NavigationService _registartionService;
+        private RegistrationsStore _registrationsStore;
+        private readonly NavigationService _registartionNavigationService;
 
         private readonly IAddRegistrationCommand _addRegistrationCommand;
 
-        public MakeRegistrationCommand(MakeRegistrationViewModel makeRegistrationViewModel, RegistrationsBook registrationsBook, NavigationService registartionService, IAddRegistrationCommand addRegistrationCommand)
+        public MakeRegistrationCommand(MakeRegistrationViewModel makeRegistrationViewModel, RegistrationsStore registrationsStore, NavigationService registartionNavigationService)
         {
             _makeRegistrationViewModel = makeRegistrationViewModel;
-            _registrationsBook = registrationsBook;
-            _registartionService = registartionService;
-            _addRegistrationCommand = addRegistrationCommand;
+            _registrationsStore = registrationsStore;
+            _registartionNavigationService = registartionNavigationService;
+
             _makeRegistrationViewModel.PropertyChanged += OnViewModelPropertyChanged;
 
         }
 
 
-        public override void Execute(object parameter)
+        public override async Task ExecuteAsync(object parameter)
         {
             try
             {
                 //ToDo: Update registration if exist
                 Registration registration = new Registration(_makeRegistrationViewModel.UserId, _makeRegistrationViewModel.CounterLecture, _makeRegistrationViewModel.RegistrationDate);
 
-                _registrationsBook.AddRegistration(registration);
+                
+                await _registrationsStore.Add(registration);
 
                 //ToDo: Handle exception
-                _addRegistrationCommand.Execute(registration);
+                //await _addRegistrationCommand.Execute(registration);
                 MessageBox.Show("تم التقييد بنجاح");
 
-                _registartionService.Navigate();
+                _registartionNavigationService.Navigate();
             }
             catch (Exception)
             {
@@ -70,5 +73,6 @@ namespace WaterNetworkProject.Commands
                 OnCanExecutedChanged();
             }
         }
+
     }
 }

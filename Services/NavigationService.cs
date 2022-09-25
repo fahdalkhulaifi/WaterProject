@@ -18,9 +18,10 @@ namespace WaterNetworkProject.Services
             _navigationStore = navigationStore;
             _createViewModel = createViewModel;
         }
+
         public void Navigate()
         {
-            _navigationStore.CurrentViewModel = _createViewModel();
+            _navigationStore.CurrentviewModel = _createViewModel();
         }
     }
 }
