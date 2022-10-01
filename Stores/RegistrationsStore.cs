@@ -22,7 +22,6 @@ namespace WaterNetwork.WPF.Stores
 
         public event Action RegistrationsLoaded;
         public event Action<Registration> RegistrationAdded;
-        //public event Action<Registration> YouTubeViewerUpdated;
         public event Action<int> RegistrationDeleted;
 
         public RegistrationsStore(IGetAllRegistrationsQuery getAllRegistrationsQuery, IAddRegistrationCommand addRegistrationCommand, IDeleteRegistrationCommand deleteRegistrationCommand)
@@ -52,7 +51,7 @@ namespace WaterNetwork.WPF.Stores
             try
             {
                 await _initializeLazy.Value;
-                //RegistrationsLoaded?.Invoke();
+                RegistrationsLoaded?.Invoke();
             }
             catch (Exception)
             {
@@ -61,9 +60,9 @@ namespace WaterNetwork.WPF.Stores
             }
         }
 
-        public async Task Add(Registration registration)
+        public async Task AddRegistration(Registration registration)
         {
-            //await _addRegistrationCommand.Execute(registration);
+            await _addRegistrationCommand.Execute(registration);
 
             _registrations.Add(registration);
 
@@ -88,7 +87,7 @@ namespace WaterNetwork.WPF.Stores
         //    YouTubeViewerUpdated?.Invoke(youTubeViewer);
         //}
 
-        public async Task Delete(int id)
+        public async Task DeleteRegistration(int id)
         {
             await _deleteRegistrationCommand.Execute(id);
 

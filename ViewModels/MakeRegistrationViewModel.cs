@@ -62,12 +62,10 @@ namespace WaterNetworkProject.ViewModels
         public ICommand RegisterCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public MakeRegistrationViewModel( RegistrationsStore registrationsStore, NavigationService registrationNavigationService )
+        public MakeRegistrationViewModel( RegistrationsStore registrationsStore, ConsumersStore consumersStore, NavigationService registrationNavigationService )
         {
-
-            RegisterCommand = new MakeRegistrationCommand(this, registrationsStore, registrationNavigationService);
+            RegisterCommand = new MakeRegistrationCommand(this, registrationsStore, consumersStore, registrationNavigationService);
             CancelCommand = new NavigateCommand(registrationNavigationService); 
-
         }
     }
 }

@@ -11,9 +11,11 @@ namespace WaterNetwork.WPF.Stores
 {
     public class ConsumersStore
     {
-        private IGetAllConsumersQuery getAllConsumersQuery;
-        private IAddConsumerCommand addConsumerCommand;
-        private IDeleteConsumerCommand deleteConsumerCommand;
+        private IGetConsumerQuery GetConsumerQuery;
+        private IGetAllConsumersQuery GetAllConsumersQuery;
+        private IAddConsumerCommand AddConsumerCommand;
+        private IDeleteConsumerCommand DeleteConsumerCommand;
+        
 
         private Lazy<Task> _initializeLazy;
         private readonly List<Consumer> _consumers;
@@ -25,11 +27,12 @@ namespace WaterNetwork.WPF.Stores
         //public event Action<Registration> YouTubeViewerUpdated;
         public event Action<int> ConsumerDeleted;
 
-        public ConsumersStore(IGetAllConsumersQuery getAllConsumersQuery, IAddConsumerCommand addConsumerCommand, IDeleteConsumerCommand deleteConsumerCommand)
+        public ConsumersStore(IGetAllConsumersQuery getAllConsumersQuery, IGetConsumerQuery getConsumerQuery, IAddConsumerCommand addConsumerCommand, IDeleteConsumerCommand deleteConsumerCommand)
         {
-            this.getAllConsumersQuery = getAllConsumersQuery;
-            this.addConsumerCommand = addConsumerCommand;
-            this.deleteConsumerCommand = deleteConsumerCommand;
+            GetAllConsumersQuery = getAllConsumersQuery;
+            GetConsumerQuery = getConsumerQuery;
+            AddConsumerCommand = addConsumerCommand;
+            DeleteConsumerCommand = deleteConsumerCommand;
 
             _initializeLazy = new Lazy<Task>(Initialize);
             _consumers = new List<Consumer>();
@@ -37,7 +40,7 @@ namespace WaterNetwork.WPF.Stores
 
         public async Task Initialize()
         {
-            var consumers = await getAllConsumersQuery.Execute();
+            var consumers = await GetAllConsumersQuery.Execute();
 
             _consumers.Clear();
 
@@ -54,8 +57,21 @@ namespace WaterNetwork.WPF.Stores
             catch (Exception)
             {
                 _initializeLazy = new Lazy<Task>(Initialize);
-                throw;
+                //throw;
             }
+        }
+
+        public Consumer Find(int id)
+        {
+            try
+            {
+                 return _consumers.FirstOrDefault(c => c.Id == id);
+            }
+            catch (Exception ex)
+            {
+            }
+
+            return null;
         }
     }
 }

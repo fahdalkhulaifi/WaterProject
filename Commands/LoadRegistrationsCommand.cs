@@ -13,11 +13,11 @@ namespace WaterNetwork.WPF.Commands
     {
 
         private readonly RegistrationListViewModel _viewModel;
-        private readonly RegistrationsStore _hotelStore;
+        private readonly RegistrationsStore _registrationSore;
 
         public LoadRegistrationsCommand(RegistrationListViewModel viewModel, RegistrationsStore RegistrationsStore)
         {
-            _hotelStore = RegistrationsStore;
+            _registrationSore = RegistrationsStore;
             _viewModel = viewModel;
         }
 
@@ -27,9 +27,9 @@ namespace WaterNetwork.WPF.Commands
             _viewModel.IsLoading = true;
             try
             {
-                await _hotelStore.Load();
+                await _registrationSore.Load();
 
-                _viewModel.UpdateRegistrations(_hotelStore.Registrations);
+                _viewModel.UpdateRegistrations(_registrationSore.Registrations);
             }
             catch (Exception)
             {

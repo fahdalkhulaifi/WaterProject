@@ -18,18 +18,20 @@ namespace WaterNetworkProject.Commands
     {
         private MakeRegistrationViewModel _makeRegistrationViewModel;
         private RegistrationsStore _registrationsStore;
+        private ConsumersStore _consumerStore;
+
         private readonly NavigationService _registartionNavigationService;
 
         private readonly IAddRegistrationCommand _addRegistrationCommand;
 
-        public MakeRegistrationCommand(MakeRegistrationViewModel makeRegistrationViewModel, RegistrationsStore registrationsStore, NavigationService registartionNavigationService)
+        public MakeRegistrationCommand(MakeRegistrationViewModel makeRegistrationViewModel, RegistrationsStore registrationsStore, ConsumersStore consumersStore, NavigationService registartionNavigationService)
         {
             _makeRegistrationViewModel = makeRegistrationViewModel;
             _registrationsStore = registrationsStore;
+            _consumerStore = consumersStore;
             _registartionNavigationService = registartionNavigationService;
 
             _makeRegistrationViewModel.PropertyChanged += OnViewModelPropertyChanged;
-
         }
 
 
@@ -38,20 +40,36 @@ namespace WaterNetworkProject.Commands
             try
             {
                 //ToDo: Update registration if exist
-                Registration registration = new Registration(_makeRegistrationViewModel.UserId, _makeRegistrationViewModel.CounterLecture, _makeRegistrationViewModel.RegistrationDate);
+                await _consumerStore.Load();
+
+                var consumer = _consumerStore.Find(_makeRegistrationViewModel.UserId);
+
+                if(consumer != null)
+                {
+                    Registration registration = new Registration(_makeRegistrationViewModel.UserId, _makeRegistrationViewModel.CounterLecture, _makeRegistrationViewModel.RegistrationDate);
+
+                    registration.Consumer = consumer;
+                    registration.ConsumerId = consumer.Id;
+                    registration.ConsumerName = consumer.FirstName;
+
+                    await _registrationsStore.AddRegistration(registration);
+
+                    //ToDo: Handle exception
+                    //await _addRegistrationCommand.Execute(registration);
+                    MessageBox.Show("تم التقييد بنجاح");
+
+                    _registartionNavigationService.Navigate();
+                }
+                else 
+                {
+                    MessageBox.Show(".المستخدم غير موجود");
+                }
 
                 
-                await _registrationsStore.Add(registration);
-
-                //ToDo: Handle exception
-                //await _addRegistrationCommand.Execute(registration);
-                MessageBox.Show("تم التقييد بنجاح");
-
-                _registartionNavigationService.Navigate();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show(".حدث خطأ ما");
+                MessageBox.Show(ex.Message);
             }
             
         }

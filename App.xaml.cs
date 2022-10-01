@@ -21,6 +21,7 @@ using WaterNetwork.WPF.Stores;
 using WaterNetwork.Domain.Commands.Consumers;
 using WaterNetwork.Entities.Commands.Consumers;
 using WaterNetwork.EntityFramework.Commands.Consumers;
+using WaterNetwork.Entities.Queries;
 
 namespace WaterNetworkProject
 {
@@ -42,12 +43,13 @@ namespace WaterNetworkProject
         private readonly IAddConsumerCommand _addConsumerCommand;
         private readonly IDeleteConsumerCommand _deleteConsumerCommand;
         private readonly IGetAllConsumersQuery _getAllConsumersQuery;
+        private readonly IGetConsumerQuery _getConsumerQuery;
 
         private readonly AppDbContextFactory _appDbContextFactory;
 
         public App()
         {
-            string connectionString = "Server=.\\SQLEXPRESS;Database=WaterNetwork;Trusted_connection=true";
+            string connectionString = "Server=.;Database=WaterNetwork;Trusted_connection=true";
 
             _navigationStore = new NavigationStore();
 
@@ -60,13 +62,15 @@ namespace WaterNetworkProject
             _deleteRegistrationCommand = new DeleteRegistrationCommand(_appDbContextFactory);
 
             _getAllConsumersQuery = new GetAllConsumersQuery(_appDbContextFactory);
+            _getConsumerQuery = new GetConsumerQuery(_appDbContextFactory);
+
             _addConsumerCommand = new AddConsumerCommand(_appDbContextFactory);
             _deleteConsumerCommand = new DeleteConsumerCommand(_appDbContextFactory);
 
             _registrationsBookService = new RegistrationBookService(_getAllRegistrationsQuery, _addRegistrationCommand, _deleteRegistrationCommand);
-            
+
+            _consumersStore = new ConsumersStore(_getAllConsumersQuery, _getConsumerQuery, _addConsumerCommand, _deleteConsumerCommand);
             _registrationsStore = new RegistrationsStore(_getAllRegistrationsQuery, _addRegistrationCommand, _deleteRegistrationCommand);
-            _consumersStore = new ConsumersStore(_getAllConsumersQuery, _addConsumerCommand, _deleteConsumerCommand);
 
             //_registrationsBookService.RegistrationBook.Consumers = File.ReadAllLines(_registrationsBookService.PathHelper.ConsumersFilePath)
             //    .Skip(1)
@@ -106,10 +110,10 @@ namespace WaterNetworkProject
         private MakeRegistrationViewModel CreateMakeRegistrationViewMode()
         {
             //return new MakeRegistrationViewModel(_registrationsStore, _registrationsBookService.RegistrationBook, new NavigationService(_navigationStore, CreateRegistrationViewModel), _addRegistrationCommand);
-            return new MakeRegistrationViewModel(_registrationsStore, new NavigationService(_navigationStore, CreateRegistrationViewModel));
+            return new MakeRegistrationViewModel(_registrationsStore, _consumersStore,  new NavigationService(_navigationStore, CreateRegistrationListViewModel));
         }
 
-        private RegistrationListViewModel CreateRegistrationViewModel()
+        private RegistrationListViewModel CreateRegistrationListViewModel()
         {
             return RegistrationListViewModel.LoadViewModel(_registrationsStore,CreateMakeRegistrationViewMode(), new NavigationService(_navigationStore, CreateMakeRegistrationViewMode));
         }

@@ -1,1 +1,2 @@
-* Use control to create views on WPF
+- Get user Id
+- Check if the user existe
