@@ -90,17 +90,10 @@ namespace WaterNetworkProject.ViewModels
 
         public static RegistrationListViewModel LoadViewModel(RegistrationsStore registrationsStore, MakeRegistrationViewModel makeRegistrationViewModel, NavigationService navigationService)
         {
-            //await registrationsStore.Load();
-
-            //var registrationsBook = new RegistrationsBook();
-
-            //registrationsBook.Registrations = (List<Registration>)registrationsStore.Registrations;
-
             RegistrationListViewModel viewModel = new RegistrationListViewModel(registrationsStore, navigationService);
 
             viewModel.LoadRegistrationsCommand.Execute(null);
 
-            //viewModel.Registrations = _registrationsStore.Registrations;
 
             return viewModel;
         }
