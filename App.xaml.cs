@@ -22,6 +22,7 @@ using WaterNetwork.Domain.Commands.Consumers;
 using WaterNetwork.Entities.Commands.Consumers;
 using WaterNetwork.EntityFramework.Commands.Consumers;
 using WaterNetwork.Entities.Queries;
+using WaterNetworkProject.ViewModels.Registrations;
 
 namespace WaterNetworkProject
 {

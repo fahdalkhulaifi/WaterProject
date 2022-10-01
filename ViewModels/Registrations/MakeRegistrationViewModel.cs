@@ -10,8 +10,9 @@ using WaterNetworkProject.Services;
 using WaterNetworkProject.Stores;
 using WaterNetwork.Domain.Commands.Registrations;
 using WaterNetwork.WPF.Stores;
+using WaterNetworkProject.ViewModels;
 
-namespace WaterNetworkProject.ViewModels
+namespace WaterNetworkProject.ViewModels.Registrations
 {
     public class MakeRegistrationViewModel : ViewModelBase
     {
@@ -62,10 +63,10 @@ namespace WaterNetworkProject.ViewModels
         public ICommand RegisterCommand { get; }
         public ICommand CancelCommand { get; }
 
-        public MakeRegistrationViewModel( RegistrationsStore registrationsStore, ConsumersStore consumersStore, NavigationService registrationNavigationService )
+        public MakeRegistrationViewModel(RegistrationsStore registrationsStore, ConsumersStore consumersStore, NavigationService registrationNavigationService)
         {
             RegisterCommand = new MakeRegistrationCommand(this, registrationsStore, consumersStore, registrationNavigationService);
-            CancelCommand = new NavigateCommand(registrationNavigationService); 
+            CancelCommand = new NavigateCommand(registrationNavigationService);
         }
     }
 }

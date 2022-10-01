@@ -10,7 +10,7 @@ using WaterNetwork.Domain.Models;
 using WaterNetwork.WPF.Commands;
 using WaterNetwork.WPF.Stores;
 using WaterNetworkProject.Services;
-using WaterNetworkProject.ViewModels;
+using WaterNetworkProject.ViewModels.Registrations;
 
 namespace WaterNetworkProject.Commands
 {

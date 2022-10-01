@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WaterNetwork.Domain.Models;
+using WaterNetworkProject.ViewModels;
 
-namespace WaterNetworkProject.ViewModels
+namespace WaterNetworkProject.ViewModels.Registrations
 {
     public class RegistrationViewModel : ViewModelBase
     {

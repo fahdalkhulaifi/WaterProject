@@ -11,8 +11,9 @@ using WaterNetworkProject.Services;
 using WaterNetworkProject.Stores;
 using WaterNetwork.WPF.Stores;
 using WaterNetwork.WPF.Commands;
+using WaterNetworkProject.ViewModels;
 
-namespace WaterNetworkProject.ViewModels
+namespace WaterNetworkProject.ViewModels.Registrations
 {
     public class RegistrationListViewModel : ViewModelBase
     {
@@ -78,12 +79,12 @@ namespace WaterNetworkProject.ViewModels
 
         public void UpdateRegistrations()
         {
-           _registrations.Clear();
+            _registrations.Clear();
 
             foreach (var registration in _registrationsBook.GetAllRegistrations())
             {
                 RegistrationViewModel registrationViewModel = new RegistrationViewModel(registration);
-                
+
                 _registrations.Add(registrationViewModel);
             }
         }
