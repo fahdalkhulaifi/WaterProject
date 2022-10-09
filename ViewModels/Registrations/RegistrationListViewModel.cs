@@ -57,12 +57,9 @@ namespace WaterNetworkProject.ViewModels.Registrations
         {
             _registrationsStore = registrationsStore;
             _registrations = new ObservableCollection<RegistrationViewModel>();
-            //_registrationsBook = registrationsBook;
 
             MakeRegistrationCommand = new NavigateCommand(makeRegisrationNavigationService);
             LoadRegistrationsCommand = new LoadRegistrationsCommand(this, _registrationsStore);
-
-            //UpdateRegistrations();
         }
 
         internal void UpdateRegistrations(IEnumerable<Registration> registrations)
@@ -70,18 +67,6 @@ namespace WaterNetworkProject.ViewModels.Registrations
             _registrations.Clear();
 
             foreach (var registration in registrations)
-            {
-                RegistrationViewModel registrationViewModel = new RegistrationViewModel(registration);
-
-                _registrations.Add(registrationViewModel);
-            }
-        }
-
-        public void UpdateRegistrations()
-        {
-            _registrations.Clear();
-
-            foreach (var registration in _registrationsBook.GetAllRegistrations())
             {
                 RegistrationViewModel registrationViewModel = new RegistrationViewModel(registration);
 

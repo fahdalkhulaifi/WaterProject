@@ -42,15 +42,15 @@ namespace WaterNetworkProject.Commands
                 //ToDo: Update registration if exist
                 await _consumerStore.Load();
 
-                var consumer = _consumerStore.Find(_makeRegistrationViewModel.UserId);
+                var existedConsumer = _consumerStore.Find(_makeRegistrationViewModel.UserId);
 
-                if(consumer != null)
+                if(existedConsumer != null)
                 {
                     Registration registration = new Registration(_makeRegistrationViewModel.UserId, _makeRegistrationViewModel.CounterLecture, _makeRegistrationViewModel.RegistrationDate);
 
-                    registration.Consumer = consumer;
-                    registration.ConsumerId = consumer.Id;
-                    registration.ConsumerName = consumer.FirstName;
+                    registration.Consumer = existedConsumer;
+                    registration.ConsumerId = existedConsumer.Id;
+                    registration.ConsumerName = existedConsumer.FirstName;
 
                     await _registrationsStore.AddRegistration(registration);
 

@@ -73,5 +73,14 @@ namespace WaterNetwork.WPF.Stores
 
             return null;
         }
+
+        public async Task AddConsumer(Consumer consumer)
+        {
+            await AddConsumerCommand.Execute(consumer);
+
+            _consumers.Add(consumer);
+
+            ConsumerAdded?.Invoke(consumer);
+        }
     }
 }

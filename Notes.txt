@@ -1,2 +1,3 @@
-- Get user Id
+- Add consumers management
+
 - Check if the user existe
