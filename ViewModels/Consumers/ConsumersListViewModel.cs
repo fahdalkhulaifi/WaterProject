@@ -30,7 +30,7 @@ namespace WaterNetwork.WPF.ViewModels.Consumers
                 OnPropertyChanged(nameof(IsLoading));
             }
         }
-        private IEnumerable<ConsumerViewModel> Consumers => _consumers;
+        public IEnumerable<ConsumerViewModel> Consumers => _consumers;
 
        
 

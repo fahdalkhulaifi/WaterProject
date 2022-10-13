@@ -23,6 +23,7 @@ using WaterNetwork.Entities.Commands.Consumers;
 using WaterNetwork.EntityFramework.Commands.Consumers;
 using WaterNetwork.Entities.Queries;
 using WaterNetworkProject.ViewModels.Registrations;
+using WaterNetwork.WPF.ViewModels.Consumers;
 
 namespace WaterNetworkProject
 {
@@ -90,7 +91,9 @@ namespace WaterNetworkProject
         protected override void OnStartup(StartupEventArgs e)
         {
 
-            _navigationStore.CurrentviewModel = CreateMakeRegistrationViewMode();
+            //_navigationStore.CurrentviewModel = CreateMakeRegistrationViewMode();
+            _navigationStore.CurrentviewModel = CreateConsumersListViewModel();
+
             MainWindow = new MainWindow()
             {
                 DataContext = new MainViewModel( _navigationStore)
@@ -111,13 +114,28 @@ namespace WaterNetworkProject
         private MakeRegistrationViewModel CreateMakeRegistrationViewMode()
         {
             //return new MakeRegistrationViewModel(_registrationsStore, _registrationsBookService.RegistrationBook, new NavigationService(_navigationStore, CreateRegistrationViewModel), _addRegistrationCommand);
-            return new MakeRegistrationViewModel(_registrationsStore, _consumersStore,  new NavigationService(_navigationStore, CreateRegistrationListViewModel));
+            return new MakeRegistrationViewModel(_registrationsStore, _consumersStore,  new NavigationService(_navigationStore, CreateRegistrationsListViewModel));
         }
 
-        private RegistrationListViewModel CreateRegistrationListViewModel()
+        private RegistrationListViewModel CreateRegistrationsListViewModel()
         {
             return RegistrationListViewModel.LoadViewModel(_registrationsStore,CreateMakeRegistrationViewMode(), new NavigationService(_navigationStore, CreateMakeRegistrationViewMode));
         }
+
+        //-------------------------------------------------------------------------------------------
+        // Consumers 
+
+        private AddConsumerViewModel CreateAddConsumerViewModel()
+        {
+            return new AddConsumerViewModel(_consumersStore, new NavigationService(_navigationStore, CreateConsumersListViewModel));
+        }
+
+        private ViewModelBase CreateConsumersListViewModel()
+        {
+            return ConsumersListViewModel.LoadViewModel(_consumersStore, CreateAddConsumerViewModel(), new NavigationService(_navigationStore, CreateAddConsumerViewModel));
+        }
+
+
 
         //ToDo: stopped 2:29:15  https://www.youtube.com/watch?v=54ZmhbpjBmg&list=LL&index=4&t=38s&ab_channel=SingletonSean
         //https://www.youtube.com/watch?v=STt3U122wiU&list=PLA8ZIAm2I03hS41Fy4vFpRw8AdYNBXmNm&index=6&ab_channel=SingletonSean

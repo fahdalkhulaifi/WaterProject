@@ -8,8 +8,8 @@ using System.Windows;
 using WaterNetwork.Domain.Commands.Consumers;
 using WaterNetwork.Domain.Models;
 using WaterNetwork.WPF.Stores;
-using WaterNetwork.WPF.ViewModels.Consumers;
 using WaterNetworkProject.Services;
+using WaterNetwork.WPF.ViewModels.Consumers;
 
 namespace WaterNetwork.WPF.Commands.Consumers
 {
@@ -18,14 +18,12 @@ namespace WaterNetwork.WPF.Commands.Consumers
         private AddConsumerViewModel _addConsumerViewModel;
         private ConsumersStore _consumersStore;
         private readonly NavigationService _consumerNavigationService;
-        private readonly IAddConsumerCommand _addConsumerCommand;
 
-        public AddConsumerCommand(AddConsumerViewModel addConsumerViewModel, ConsumersStore consumersStore, NavigationService consumerNavigationService, IAddConsumerCommand addConsumerCommand)
+        public AddConsumerCommand(AddConsumerViewModel addConsumerViewModel, ConsumersStore consumersStore, NavigationService consumerNavigationService)
         {
             _addConsumerViewModel = addConsumerViewModel;
             _consumersStore = consumersStore;
             _consumerNavigationService = consumerNavigationService;
-            _addConsumerCommand = addConsumerCommand;
 
             _addConsumerViewModel.PropertyChanged += OnViewModelPropertyChanged;
         }

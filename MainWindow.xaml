@@ -5,19 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WaterNetworkProject" 
         xmlns:views="clr-namespace:WaterNetworkProject.Views"
-        xmlns:vms="clr-namespace:WaterNetworkProject.ViewModels.Registrations"
+        xmlns:consumersViews="clr-namespace:WaterNetwork.WPF.Views.Consumers"
+        xmlns:registrationsVms="clr-namespace:WaterNetworkProject.ViewModels.Registrations"
+        xmlns:consumersVms="clr-namespace:WaterNetwork.WPF.ViewModels.Consumers"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     
     <Grid>
         <Grid.Resources>
-            <DataTemplate DataType="{x:Type vms:MakeRegistrationViewModel}">
+            <DataTemplate DataType="{x:Type registrationsVms:MakeRegistrationViewModel}">
                 <views:MakeRegistrationView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type vms:RegistrationListViewModel}">
+            <DataTemplate DataType="{x:Type registrationsVms:RegistrationListViewModel}">
                 <views:RegistrationsListView/>
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type consumersVms:AddConsumerViewModel}">
+                <consumersViews:AddConsumerView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type consumersVms:ConsumersListViewModel}">
+                <consumersViews:ConsumersListView/>
+            </DataTemplate>
+
         </Grid.Resources>
 
         <ContentControl Content="{Binding CurrentViewModel}"/>
