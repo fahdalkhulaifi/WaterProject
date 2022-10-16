@@ -37,20 +37,27 @@ namespace WaterNetwork.WPF.Commands.Consumers
 
                 //ToDo: addMapper maybe 
                 Consumer consumer = new Consumer();
-
                 consumer.FirstName = _addConsumerViewModel.FirstName;
                 consumer.LastName = _addConsumerViewModel.LastName;
 
-                await _consumersStore.AddConsumer(consumer);
-                MessageBox.Show("تم أضافة المستخدم بنجاح");
+                if (_consumersStore.VerifyConsumerExists(consumer))
+                {
+                    MessageBox.Show("المستخدم موجود مسبقا");
+                    _consumerNavigationService.Navigate();
+                }
+                else
+                {
+                    await _consumersStore.AddConsumer(consumer);
 
+                    MessageBox.Show("تم أضافة المستخدم بنجاح");
+                    _consumerNavigationService.Navigate();
+                }
             }
             catch (Exception)
             {
                 MessageBox.Show("حدث خطأ خلال أضافة المستخدم");
             }
 
-            throw new NotImplementedException();
         }
 
         private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)

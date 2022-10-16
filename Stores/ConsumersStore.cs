@@ -82,5 +82,15 @@ namespace WaterNetwork.WPF.Stores
 
             ConsumerAdded?.Invoke(consumer);
         }
+
+        public bool VerifyConsumerExists(Consumer consumer)
+        {
+            var existingConsumer = _consumers.FirstOrDefault(c => c.FirstName == consumer.FirstName && c.LastName == consumer.LastName);
+
+            if (existingConsumer != null)
+                return true;
+
+            return false;
+        }
     }
 }
