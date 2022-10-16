@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WaterNetwork.Domain.Models;
 
-namespace WaterNetwork.WPF.Services.Models
+namespace WaterNetworkProject.Services.Models
 {
     public class RegistrationBookDTO
     {

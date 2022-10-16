@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WaterNetwork.Domain.Models;
 
-namespace WaterNetwork.WPF.ViewModels.Consumers
+namespace WaterNetworkProject.ViewModels.Consumers
 {
     public class ConsumerViewModel
     {

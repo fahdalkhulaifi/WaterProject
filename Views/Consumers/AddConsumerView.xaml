@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="WaterNetwork.WPF.Views.Consumers.AddConsumerView"
+﻿<UserControl x:Class="WaterNetworkProject.Views.Consumers.AddConsumerView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WaterNetwork.WPF.Views.Consumers"
+             xmlns:local="clr-namespace:WaterNetworkProject.Views.Consumers"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WaterNetwork.WPF.Services.Models;
+using WaterNetworkProject.Services.Models;
 
-namespace WaterNetwork.WPF.Services.API.Users
+namespace WaterNetworkProject.Services.API.Users
 {
     public class UsersService : IUsersService
     {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WaterNetwork.WPF.Stores;
+using WaterNetworkProject.Stores;
 using WaterNetworkProject.ViewModels.Registrations;
 
-namespace WaterNetwork.WPF.Commands
+namespace WaterNetworkProject.Commands
 {
 
     public class LoadRegistrationsCommand : AsyncCommandbase

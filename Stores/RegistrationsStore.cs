@@ -7,7 +7,7 @@ using WaterNetwork.Domain.Commands.Registrations;
 using WaterNetwork.Domain.Models;
 using WaterNetwork.Domain.Queries;
 
-namespace WaterNetwork.WPF.Stores
+namespace WaterNetworkProject.Stores
 {
     public class RegistrationsStore
     {

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using WaterNetwork.Domain.Commands.Registrations;
 using WaterNetwork.Domain.Models;
-using WaterNetwork.WPF.Commands;
-using WaterNetwork.WPF.Stores;
+using WaterNetworkProject.Commands;
+using WaterNetworkProject.Stores;
 using WaterNetworkProject.Services;
 using WaterNetworkProject.ViewModels.Registrations;
 

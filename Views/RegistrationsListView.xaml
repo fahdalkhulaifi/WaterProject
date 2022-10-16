@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:localResources="clr-namespace:WaterNetworkProject.Properties"
              xmlns:local="clr-namespace:WaterNetworkProject.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -23,10 +24,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock HorizontalAlignment="Right" Grid.Column="1" Text="قائمة المستهلكين" FontSize="24"/>
+            <TextBlock HorizontalAlignment="Right" Grid.Column="1" Text="{x:Static localResources:Resources.Consumers_List}" FontSize="24"/>
 
             <Button Command="{Binding MakeRegistrationCommand}"
-                Grid.Column="0" Margin="10 0 0 0" Content="أضافة قراءة" />
+                Grid.Column="0" Margin="10 0 0 0" Content="{x:Static localResources:Resources.Registration_Make}" />
 
         </Grid>
 
@@ -37,7 +38,7 @@
 
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="التاريخ">
+                    <GridViewColumn Header="{x:Static localResources:Resources.Registration_Date}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding ConsumationDate}"/>
@@ -45,15 +46,15 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="قيمة الاستهلاك">
+                    <GridViewColumn Header="{x:Static localResources:Resources.Registration_CounterLecture}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding CounterLecture}"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    
-                    <GridViewColumn Header="اسم المشترك">
+
+                    <GridViewColumn Header="{x:Static localResources:Resources.Consumer_FirstName}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding ConsumerName}"/>
@@ -61,7 +62,7 @@
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
 
-                    <GridViewColumn Header="رقم المشترك">
+                    <GridViewColumn Header="{x:Static localResources:Resources.Consumer_number}">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding ConsumerId}"/>

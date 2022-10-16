@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WaterNetwork.WPF.Services.Models;
+using WaterNetworkProject.Services.Models;
 
-namespace WaterNetwork.WPF.Services.API.Registrations
+namespace WaterNetworkProject.Services.API.Registrations
 {
     public interface IRegistrationsService
     {

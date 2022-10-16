@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WaterNetworkProject.Commands;
 
-namespace WaterNetwork.WPF.Commands
+namespace WaterNetworkProject.Commands
 {
     public abstract class AsyncCommandbase : CommandBase
     {

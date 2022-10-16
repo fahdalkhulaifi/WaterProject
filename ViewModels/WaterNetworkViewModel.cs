@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WaterNetwork.WPF.Stores;
+using WaterNetworkProject.Stores;
 using WaterNetworkProject.ViewModels;
 using WaterNetworkProject.ViewModels.Registrations;
 
-namespace WaterNetwork.WPF.ViewModels
+namespace WaterNetworkProject.ViewModels
 {
     public class WaterNetworkViewModel : ViewModelBase
     {

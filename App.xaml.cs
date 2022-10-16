@@ -17,13 +17,13 @@ using WaterNetwork.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using WaterNetwork.EntityFramework.Queries;
 using WaterNetwork.Domain.Queries;
-using WaterNetwork.WPF.Stores;
+using WaterNetworkProject.Stores;
 using WaterNetwork.Domain.Commands.Consumers;
 using WaterNetwork.Entities.Commands.Consumers;
 using WaterNetwork.EntityFramework.Commands.Consumers;
 using WaterNetwork.Entities.Queries;
 using WaterNetworkProject.ViewModels.Registrations;
-using WaterNetwork.WPF.ViewModels.Consumers;
+using WaterNetworkProject.ViewModels.Consumers;
 
 namespace WaterNetworkProject
 {

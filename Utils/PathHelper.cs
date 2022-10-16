@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WaterNetwork.WPF.Services.Utils
+namespace WaterNetworkProject.Services.Utils
 {
     public class PathHelper
     {

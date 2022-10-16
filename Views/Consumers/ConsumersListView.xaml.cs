@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WaterNetwork.WPF.Views.Consumers
+namespace WaterNetworkProject.Views.Consumers
 {
     /// <summary>
     /// Interaction logic for ConsumersListView.xaml

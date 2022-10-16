@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WaterNetwork.Domain.Models;
-using WaterNetwork.WPF.Stores;
+using WaterNetworkProject.Stores;
 using WaterNetworkProject.Stores;
 
 namespace WaterNetworkProject.ViewModels

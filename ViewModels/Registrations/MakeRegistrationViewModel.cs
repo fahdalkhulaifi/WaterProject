@@ -9,7 +9,7 @@ using WaterNetwork.Domain.Models;
 using WaterNetworkProject.Services;
 using WaterNetworkProject.Stores;
 using WaterNetwork.Domain.Commands.Registrations;
-using WaterNetwork.WPF.Stores;
+using WaterNetworkProject.Stores;
 using WaterNetworkProject.ViewModels;
 
 namespace WaterNetworkProject.ViewModels.Registrations

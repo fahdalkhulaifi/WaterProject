@@ -7,7 +7,7 @@ using WaterNetwork.Domain.Commands.Consumers;
 using WaterNetwork.Domain.Models;
 using WaterNetwork.Domain.Queries;
 
-namespace WaterNetwork.WPF.Stores
+namespace WaterNetworkProject.Stores
 {
     public class ConsumersStore
     {

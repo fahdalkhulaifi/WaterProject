@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using WaterNetwork.Domain.Commands.Registrations;
 using WaterNetwork.Domain.Models;
 using WaterNetwork.Domain.Queries;
-using WaterNetwork.WPF.Services.Utils;
+using WaterNetworkProject.Services.Utils;
 
 namespace WaterNetworkProject.Services
 {

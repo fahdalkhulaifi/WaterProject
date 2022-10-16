@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WaterNetworkProject.Entities;
 
-namespace WaterNetwork.WPF.Services.Utils
+namespace WaterNetworkProject.Services.Utils
 {
     public class NumberToWordConverter
     {

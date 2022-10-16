@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WaterNetwork.Domain.Models;
-using WaterNetwork.WPF.Services.Utils;
+using WaterNetworkProject.Services.Utils;
 
-namespace WaterNetwork.WPF.Services
+namespace WaterNetworkProject.Services
 {
     public class BillService
     {

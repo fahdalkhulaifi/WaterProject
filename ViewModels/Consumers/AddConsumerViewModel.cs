@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using WaterNetwork.WPF.Commands.Consumers;
-using WaterNetwork.WPF.Stores;
+using WaterNetworkProject.Commands.Consumers;
+using WaterNetworkProject.Stores;
 using WaterNetworkProject.Commands;
 using WaterNetworkProject.Services;
 using WaterNetworkProject.ViewModels;
 
-namespace WaterNetwork.WPF.ViewModels.Consumers
+namespace WaterNetworkProject.ViewModels.Consumers
 {
     public class AddConsumerViewModel: ViewModelBase
     {

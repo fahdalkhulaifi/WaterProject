@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using WaterNetwork.Domain.Commands.Consumers;
 using WaterNetwork.Domain.Models;
-using WaterNetwork.WPF.Stores;
+using WaterNetworkProject.Stores;
 using WaterNetworkProject.Services;
-using WaterNetwork.WPF.ViewModels.Consumers;
+using WaterNetworkProject.ViewModels.Consumers;
 
-namespace WaterNetwork.WPF.Commands.Consumers
+namespace WaterNetworkProject.Commands.Consumers
 {
     public class AddConsumerCommand : AsyncCommandbase
     {
