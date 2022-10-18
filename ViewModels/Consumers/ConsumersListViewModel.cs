@@ -35,16 +35,20 @@ namespace WaterNetworkProject.ViewModels.Consumers
        
 
         public ICommand AddConsumerCommand { get; }
-        public ICommand LoadConsumersCommand { get; }   
+        public ICommand LoadConsumersCommand { get; }
+
+        public ICommand RegistrationsListCommand { get; }
 
 
-        public ConsumersListViewModel(ConsumersStore consumersStore, NavigationService addConsumerNavigationService)
+
+        public ConsumersListViewModel(ConsumersStore consumersStore, NavigationService addConsumerNavigationService, NavigationService registrationsListNavigationService)
         {
             _consumerStore = consumersStore;
             _consumers = new ObservableCollection<ConsumerViewModel>();
 
             AddConsumerCommand = new NavigateCommand(addConsumerNavigationService);
             LoadConsumersCommand = new LoadConsumersCommand(this, _consumerStore);
+            RegistrationsListCommand = new NavigateCommand(registrationsListNavigationService);
         }
 
         internal void UpdateConsumers(IEnumerable<Consumer> consumers)
@@ -59,9 +63,9 @@ namespace WaterNetworkProject.ViewModels.Consumers
             }
         }
 
-        public static ConsumersListViewModel LoadViewModel(ConsumersStore consumersStore, AddConsumerViewModel addConsumerViewModel, NavigationService navigationService)
+        public static ConsumersListViewModel LoadViewModel(ConsumersStore consumersStore, AddConsumerViewModel addConsumerViewModel, NavigationService navigationService, NavigationService registrationsListNavigationService)
         {
-            ConsumersListViewModel viewModel = new ConsumersListViewModel(consumersStore, navigationService);
+            ConsumersListViewModel viewModel = new ConsumersListViewModel(consumersStore, navigationService, registrationsListNavigationService);
 
             viewModel.LoadConsumersCommand.Execute(null);
 

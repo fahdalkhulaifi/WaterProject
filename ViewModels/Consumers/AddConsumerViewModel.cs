@@ -39,10 +39,10 @@ namespace WaterNetworkProject.ViewModels.Consumers
         public ICommand RegisterCommand { get;  }
         public ICommand CancelCommand { get; }
 
-        public AddConsumerViewModel(ConsumersStore consumersStore, NavigationService consumerNavigationService)
+        public AddConsumerViewModel(ConsumersStore consumersStore, NavigationService consumersNavigationService)
         {
-            RegisterCommand = new AddConsumerCommand(this, consumersStore, consumerNavigationService);
-            CancelCommand = new NavigateCommand(consumerNavigationService);
+            RegisterCommand = new AddConsumerCommand(this, consumersStore, consumersNavigationService);
+            CancelCommand = new NavigateCommand(consumersNavigationService);
         }
 
     }

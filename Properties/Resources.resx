@@ -127,7 +127,7 @@
     <value>المستخدم موجود مسبقا</value>
   </data>
   <data name="Consumers_List" xml:space="preserve">
-    <value>قائمة المستهلكين</value>
+    <value>قائمة المستخدمين</value>
   </data>
   <data name="Consumer_Cancel" xml:space="preserve">
     <value>إلغاء</value>
@@ -143,6 +143,9 @@
   </data>
   <data name="Consumer_Register" xml:space="preserve">
     <value>إضافة مستخدم</value>
+  </data>
+  <data name="Registrations_invoicesList" xml:space="preserve">
+    <value>قائمة الفواتير</value>
   </data>
   <data name="Registrations_MakeRegistration_Error" xml:space="preserve">
     <value>حدث خطأ ما خلال التقييد</value>

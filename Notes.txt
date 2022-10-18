@@ -1,5 +1,1 @@
 - Design the views 
-
-
-- Add ressources
-- Check if the user existe

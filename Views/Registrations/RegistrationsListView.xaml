@@ -21,11 +21,15 @@
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition  Width="auto"/>
+                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock HorizontalAlignment="Right" Grid.Column="1" Text="{x:Static localResources:Resources.Consumers_List}" FontSize="24"/>
+            <TextBlock HorizontalAlignment="Right" Grid.Column="2" Text="{x:Static localResources:Resources.Registrations_invoicesList}" FontSize="24"/>
 
+            <Button Command="{Binding ConsumersListNavigationService}" 
+                Grid.Column="1" Margin="10 0 0 0" Content="{x:Static localResources:Resources.Consumers_List}" />
+            
             <Button Command="{Binding MakeRegistrationCommand}"
                 Grid.Column="0" Margin="10 0 0 0" Content="{x:Static localResources:Resources.Registration_Make}" />
 

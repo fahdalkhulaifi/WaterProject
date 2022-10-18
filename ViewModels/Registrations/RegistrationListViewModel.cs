@@ -51,14 +51,16 @@ namespace WaterNetworkProject.ViewModels.Registrations
 
         public IEnumerable<RegistrationViewModel> Registrations => _registrations;
         public ICommand MakeRegistrationCommand { get; }
+        public ICommand ConsumersListNavigationService { get; }
         public ICommand LoadRegistrationsCommand { get; }
 
-        public RegistrationListViewModel(RegistrationsStore registrationsStore, NavigationService makeRegisrationNavigationService)
+        public RegistrationListViewModel(RegistrationsStore registrationsStore, NavigationService makeRegisrationNavigationService, NavigationService consumersListNavigationService)
         {
             _registrationsStore = registrationsStore;
             _registrations = new ObservableCollection<RegistrationViewModel>();
 
             MakeRegistrationCommand = new NavigateCommand(makeRegisrationNavigationService);
+            ConsumersListNavigationService = new NavigateCommand(consumersListNavigationService);
             LoadRegistrationsCommand = new LoadRegistrationsCommand(this, _registrationsStore);
         }
 
@@ -74,9 +76,9 @@ namespace WaterNetworkProject.ViewModels.Registrations
             }
         }
 
-        public static RegistrationListViewModel LoadViewModel(RegistrationsStore registrationsStore, MakeRegistrationViewModel makeRegistrationViewModel, NavigationService navigationService)
+        public static RegistrationListViewModel LoadViewModel(RegistrationsStore registrationsStore, MakeRegistrationViewModel makeRegistrationViewModel, NavigationService navigationService, NavigationService consumersListNavigationService)
         {
-            RegistrationListViewModel viewModel = new RegistrationListViewModel(registrationsStore, navigationService);
+            RegistrationListViewModel viewModel = new RegistrationListViewModel(registrationsStore, navigationService,consumersListNavigationService);
 
             viewModel.LoadRegistrationsCommand.Execute(null);
 

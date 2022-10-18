@@ -133,7 +133,7 @@ namespace WaterNetworkProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to قائمة المستهلكين.
+        ///   Looks up a localized string similar to قائمة المستخدمين.
         /// </summary>
         public static string Consumers_List {
             get {
@@ -183,6 +183,15 @@ namespace WaterNetworkProject.Properties {
         public static string Registration_Register {
             get {
                 return ResourceManager.GetString("Registration_Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to قائمة الفواتير.
+        /// </summary>
+        public static string Registrations_invoicesList {
+            get {
+                return ResourceManager.GetString("Registrations_invoicesList", resourceCulture);
             }
         }
         

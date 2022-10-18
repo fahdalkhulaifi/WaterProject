@@ -91,8 +91,7 @@ namespace WaterNetworkProject
         protected override void OnStartup(StartupEventArgs e)
         {
 
-            //_navigationStore.CurrentviewModel = CreateMakeRegistrationViewMode();
-            _navigationStore.CurrentviewModel = CreateConsumersListViewModel();
+            _navigationStore.CurrentviewModel = CreateRegistrationsListViewModel();
 
             MainWindow = new MainWindow()
             {
@@ -119,7 +118,8 @@ namespace WaterNetworkProject
 
         private RegistrationListViewModel CreateRegistrationsListViewModel()
         {
-            return RegistrationListViewModel.LoadViewModel(_registrationsStore,CreateMakeRegistrationViewMode(), new NavigationService(_navigationStore, CreateMakeRegistrationViewMode));
+            return RegistrationListViewModel.LoadViewModel(_registrationsStore,CreateMakeRegistrationViewMode(), new NavigationService(_navigationStore, CreateMakeRegistrationViewMode)
+                                                            ,new NavigationService(_navigationStore,CreateConsumersListViewModel));
         }
 
         //-------------------------------------------------------------------------------------------
@@ -132,7 +132,8 @@ namespace WaterNetworkProject
 
         private ViewModelBase CreateConsumersListViewModel()
         {
-            return ConsumersListViewModel.LoadViewModel(_consumersStore, CreateAddConsumerViewModel(), new NavigationService(_navigationStore, CreateAddConsumerViewModel));
+            return ConsumersListViewModel.LoadViewModel(_consumersStore, CreateAddConsumerViewModel(), new NavigationService(_navigationStore, CreateAddConsumerViewModel)
+                                                            ,new NavigationService(_navigationStore,CreateRegistrationsListViewModel));
         }
 
 
