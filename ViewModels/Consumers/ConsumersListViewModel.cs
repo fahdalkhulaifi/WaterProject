@@ -36,6 +36,7 @@ namespace WaterNetworkProject.ViewModels.Consumers
 
         public ICommand AddConsumerCommand { get; }
         public ICommand LoadConsumersCommand { get; }
+        public ICommand DeleteConsumerCommand { get; }
 
         public ICommand RegistrationsListCommand { get; }
 

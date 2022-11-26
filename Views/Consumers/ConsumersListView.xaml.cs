@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WaterNetworkProject.ViewModels.Consumers;
 
 namespace WaterNetworkProject.Views.Consumers
 {
@@ -23,6 +24,31 @@ namespace WaterNetworkProject.Views.Consumers
         public ConsumersListView()
         {
             InitializeComponent();
+        }
+
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            ;
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void insertBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void updateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void deleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            int Id = (myDataGrid.SelectedItem as ConsumerViewModel).Id;
         }
     }
 }

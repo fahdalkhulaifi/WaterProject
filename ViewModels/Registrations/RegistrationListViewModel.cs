@@ -12,6 +12,7 @@ using WaterNetworkProject.Stores;
 using WaterNetworkProject.Stores;
 using WaterNetworkProject.Commands;
 using WaterNetworkProject.ViewModels;
+using WaterNetworkProject.Commands.Registrations;
 
 namespace WaterNetworkProject.ViewModels.Registrations
 {

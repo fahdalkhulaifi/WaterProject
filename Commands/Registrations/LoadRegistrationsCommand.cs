@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using WaterNetworkProject.Stores;
 using WaterNetworkProject.ViewModels.Registrations;
 
-namespace WaterNetworkProject.Commands
+namespace WaterNetworkProject.Commands.Registrations
 {
 
     public class LoadRegistrationsCommand : AsyncCommandbase

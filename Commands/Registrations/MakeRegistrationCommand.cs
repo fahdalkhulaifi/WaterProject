@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 using System.Windows;
 using WaterNetwork.Domain.Commands.Registrations;
 using WaterNetwork.Domain.Models;
-using WaterNetworkProject.Commands;
 using WaterNetworkProject.Stores;
 using WaterNetworkProject.Services;
 using WaterNetworkProject.ViewModels.Registrations;
 
-namespace WaterNetworkProject.Commands
+namespace WaterNetworkProject.Commands.Registrations
 {
     public class MakeRegistrationCommand : AsyncCommandbase
     {
@@ -44,7 +43,7 @@ namespace WaterNetworkProject.Commands
 
                 var existedConsumer = _consumerStore.Find(_makeRegistrationViewModel.UserId);
 
-                if(existedConsumer != null)
+                if (existedConsumer != null)
                 {
                     Registration registration = new Registration(_makeRegistrationViewModel.UserId, _makeRegistrationViewModel.CounterLecture, _makeRegistrationViewModel.RegistrationDate);
 
@@ -60,18 +59,18 @@ namespace WaterNetworkProject.Commands
 
                     _registartionNavigationService.Navigate();
                 }
-                else 
+                else
                 {
                     MessageBox.Show(".المستخدم غير موجود");
                 }
 
-                
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
 
         public override bool CanExecute(object parameter)
@@ -81,12 +80,12 @@ namespace WaterNetworkProject.Commands
 
         private long GetTimestamp(DateTime value)
         {
-            return ((DateTimeOffset)value).ToUnixTimeMilliseconds(); 
+            return ((DateTimeOffset)value).ToUnixTimeMilliseconds();
         }
 
         private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == nameof(MakeRegistrationViewModel.UserId))
+            if (e.PropertyName == nameof(MakeRegistrationViewModel.UserId))
             {
                 OnCanExecutedChanged();
             }
